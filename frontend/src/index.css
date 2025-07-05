@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+  }
+
+  body {
+    @apply font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: page-entrance 1.2s ease-out;
+  }
+
+  @keyframes page-entrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Light theme (default) */
+  .light {
+    @apply bg-white text-gray-900;
+  }
+
+  .light body {
+    @apply bg-white text-gray-900;
+  }
+
+  /* Dark theme */
+  .dark {
+    @apply bg-gray-900 text-white;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-white;
+  }
+
+  /* Theme-aware backgrounds */
+  .bg-theme-primary {
+    @apply bg-white dark:bg-gray-900;
+  }
+
+  .bg-theme-secondary {
+    @apply bg-gray-50 dark:bg-gray-800;
+  }
+
+  .bg-theme-accent {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
+
+  /* Theme-aware text colors */
+  .text-theme-primary {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .text-theme-secondary {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .text-theme-muted {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  /* Theme-aware borders */
+  .border-theme {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  .border-theme-light {
+    @apply border-gray-100 dark:border-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent hover:bg-accent/90 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-primary dark:border-white hover:bg-primary dark:hover:bg-white hover:text-white dark:hover:text-gray-900 text-primary dark:text-white font-medium px-6 py-3 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-gray-300 dark:border-gray-600 hover:border-accent hover:text-accent text-gray-600 dark:text-gray-300 font-medium px-6 py-3 rounded-lg transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply px-4 md:px-6 lg:px-12 xl:px-16;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Project card animated border effect */
+  .project-card-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  /* Rotating gradient border */
+  .rotating-border {
+    background: conic-gradient(
+      from 0deg,
+      #3b82f6,
+      #8b5cf6,
+      #ec4899,
+      #06b6d4,
+      #10b981,
+      #f59e0b,
+      #3b82f6
+    );
+    animation: rotate-border 4s linear infinite;
+    filter: blur(1px);
+  }
+  
+  @keyframes rotate-border {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+  /* 3D hover effect with anti-clockwise rotation */
+  .project-card-wrapper:hover {
+    transform: perspective(1200px) rotateZ(-3deg) translateY(-12px) scale(1.04);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Enhanced glow effect on hover */
+  .project-card-wrapper:hover::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(
+      circle at center,
+      rgba(59, 130, 246, 0.2) 0%,
+      rgba(139, 92, 246, 0.1) 50%,
+      transparent 70%
+    );
+    border-radius: inherit;
+    z-index: -1;
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse-glow {
+    0% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Glitch effect for hover */
+  .project-card-glitch {
+    position: relative;
+  }
+  
+  .project-card-glitch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 25%, transparent 50%, rgba(139, 92, 246, 0.1) 75%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    opacity: 0;
+  }
+  
+  .project-card-glitch:hover::after {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  /* Animation utilities */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  .floating-delayed {
+    animation: floating 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  
+  .pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .slide-in-bottom {
+    animation: slide-in-bottom 0.8s ease-out;
+  }
+  
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  /* Custom animations */
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes slide-in-bottom {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+  
+  .dark .loading-shimmer {
+    background: linear-gradient(90deg, #374151 25%, transparent 37%, #374151 63%);
+    background-size: 400% 100%;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: -100% 50%;
+    }
+  }
+
+  /* Improved scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+}
+
+/* Page-wide effects */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+}
+
+.page-transition {
+  animation: page-fade-in 1s ease-out;
+}
+
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Parallax effect */
+.parallax-bg {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Magnetic effect for interactive elements */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced focus states */
+.focus-visible:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth section transitions */
+.section-transition {
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Override transitions for animations */
+[class*="animate-"], [class*="motion-"] {
+  transition: none !important;
+}
