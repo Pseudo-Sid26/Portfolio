@@ -8,7 +8,7 @@ export const profileData = {
   location: "Pune, MH",
   socialLinks: {
     github: "https://github.com/Pseudo-Sid26",
-    linkedin: "https://linkedin.com/in/siddhesh-chavan",
+    linkedin: "https://www.linkedin.com/in/siddhesh-chavan-a196a5252/",
     twitter: "https://twitter.com/siddhesh_dev",
     website: "https://siddheshchavan.dev"
   },
