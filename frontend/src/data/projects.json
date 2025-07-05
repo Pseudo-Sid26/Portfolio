@@ -1,23 +1,6 @@
 [
   {
-    "id": 0,
-    "title": "MyOwnStore - E-Commerce Platform",
-    "description": "A modern, full-featured e-commerce platform with product management, shopping cart, user authentication, payment integration, and responsive design. Built with React and modern web technologies for optimal user experience.",
-    "technologies": ["React", "JavaScript", "CSS3", "HTML5", "Local Storage", "Responsive Design", "Modern UI/UX"],
-    "githubUrl": "https://github.com/Pseudo-Sid26/MyOwnStore",
-    "liveUrl": "https://myownstore-sooty.vercel.app/",
-    "category": "Frontend Development",
-    "domain": "E-Commerce",
-    "featured": true,
-    "stars": 12,
-    "forks": 4,
-    "language": "JavaScript",
-    "size": 2560,
-    "lastUpdated": "2024-12-15T00:00:00Z",
-    "createdAt": "2024-09-01T00:00:00Z"
-  },
-  {
-    "id": 2,
+    "id": 1,
     "title": "E-Auction System for Personalized Bidding",
     "description": "A comprehensive e-auction platform with personalized bidding features, user authentication, and real-time bidding functionality.",
     "technologies": ["React", "Node.js", "MongoDB", "Express.js", "Socket.io", "JWT"],
@@ -34,7 +17,7 @@
     "createdAt": "2024-08-01T00:00:00Z"
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "AgriTech Platform",
     "description": "Full-stack agricultural technology platform providing farmers with modern tools for crop management, weather monitoring, yield optimization, and complete farm management solution.",
     "technologies": ["React", "Python", "Django", "PostgreSQL", "Machine Learning", "IoT", "REST API"],
@@ -51,7 +34,7 @@
     "createdAt": "2024-06-01T00:00:00Z"
   },
   {
-    "id": 4,
+    "id": 3,
     "title": "AI Homework Helper",
     "description": "An intelligent homework assistance application that helps students solve problems and understand concepts using AI and machine learning.",
     "technologies": ["Python", "TensorFlow", "Flask", "OpenAI API", "React", "Natural Language Processing"],
@@ -68,7 +51,7 @@
     "createdAt": "2024-07-15T00:00:00Z"
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Bank Management System",
     "description": "A comprehensive bank management system with customer account management, transaction processing, and reporting features.",
     "technologies": ["Java", "Spring Boot", "MySQL", "Hibernate", "REST API", "Spring Security"],
@@ -85,7 +68,7 @@
     "createdAt": "2024-05-01T00:00:00Z"
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Farmer Management System",
     "description": "A comprehensive backend system for managing farmer profiles, crop data, subsidies, and agricultural resources with robust database management and API endpoints.",
     "technologies": ["PHP", "MySQL", "REST API", "Server-side Logic", "Database Design", "Authentication"],
@@ -102,7 +85,7 @@
     "createdAt": "2024-04-01T00:00:00Z"
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "Loopr Backend",
     "description": "Backend API service for the Loopr application with user authentication, data management, and API endpoints.",
     "technologies": ["Node.js", "Express.js", "MongoDB", "JWT", "bcrypt", "CORS"],
@@ -119,7 +102,7 @@
     "createdAt": "2024-03-15T00:00:00Z"
   },
   {
-    "id": 8,
+    "id": 7,
     "title": "Loopr Frontend",
     "description": "Modern frontend application for Loopr with responsive design and interactive user interface.",
     "technologies": ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Axios"],
@@ -136,7 +119,7 @@
     "createdAt": "2024-03-20T00:00:00Z"
   },
   {
-    "id": 9,
+    "id": 8,
     "title": "LooprAi",
     "description": "Full-stack AI-powered social media platform with machine learning features, recommendation systems, content analysis, and complete web application infrastructure.",
     "technologies": ["Python", "TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Flask", "React", "MongoDB", "REST API"],
@@ -153,7 +136,7 @@
     "createdAt": "2024-04-10T00:00:00Z"
   },
   {
-    "id": 10,
+    "id": 9,
     "title": "Agentic LogAI Debugger",
     "description": "An intelligent debugging tool that uses AI agents to analyze logs and provide automated debugging suggestions.",
     "technologies": ["Python", "AI Agents", "Log Analysis", "Machine Learning", "FastAPI", "LangChain"],
@@ -170,7 +153,7 @@
     "createdAt": "2024-09-01T00:00:00Z"
   },
   {
-    "id": 11,
+    "id": 10,
     "title": "Portfolio Website",
     "description": "Modern frontend portfolio website built with React, TypeScript, and Tailwind CSS. Features dynamic skills generation and static hosting compatibility.",
     "technologies": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
@@ -185,5 +168,22 @@
     "size": 2304,
     "lastUpdated": "2024-12-15T00:00:00Z",
     "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": 11,
+    "title": "MyOwnStore - Complete E-Commerce Platform",
+    "description": "Comprehensive full-stack e-commerce solution featuring modern React frontend, robust Node.js backend, secure payment processing, real-time inventory management, admin dashboard, user authentication, order tracking, and responsive design. Recently upgraded from frontend-only to complete fullstack architecture.",
+    "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Stripe", "JWT", "Tailwind CSS", "Redux", "Socket.io", "Cloudinary", "Nodemailer", "Bcrypt"],
+    "githubUrl": "https://github.com/Pseudo-Sid26/MyOwnStore",
+    "liveUrl": "",
+    "category": "Full Stack Development",
+    "domain": "E-Commerce & Retail",
+    "featured": true,
+    "stars": 28,
+    "forks": 9,
+    "language": "JavaScript",
+    "size": 4096,
+    "lastUpdated": "2025-07-06T00:00:00Z",
+    "createdAt": "2024-10-01T00:00:00Z"
   }
 ]
