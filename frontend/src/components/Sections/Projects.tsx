@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Eye, Star, GitFork, ChevronDown } from 'lucide-react';
+import { Github, ExternalLink, Eye, ChevronDown } from 'lucide-react';
 import type { Project } from '../../types';
 
 interface ProjectsProps {
@@ -10,25 +10,28 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [filter, setFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
-  const [visibleCount, setVisibleCount] = useState<number>(6); // Show 6 projects initially
+  const [visibleCount, setVisibleCount] = useState<number>(3); // Show 3 projects initially
   const [showAll, setShowAll] = useState<boolean>(false);
 
-  // Update filtered projects when filter or projects change
-  useEffect(() => {
+  // Memoize filtered projects calculation
+  const filteredProjects = useMemo(() => {
     if (filter === 'All') {
-      setFilteredProjects(projects);
-    } else {
-      const filtered = projects.filter(p => p.category === filter);
-      setFilteredProjects(filtered);
+      return projects;
     }
-    // Reset visible count when filter changes
-    setVisibleCount(6);
-    setShowAll(false);
+    return projects.filter(p => p.category === filter);
   }, [filter, projects]);
 
-  // Get projects to display based on visible count
-  const projectsToShow = showAll ? filteredProjects : filteredProjects.slice(0, visibleCount);
+  // Memoize projects to show
+  const projectsToShow = useMemo(() => {
+    return showAll ? filteredProjects : filteredProjects.slice(0, visibleCount);
+  }, [showAll, filteredProjects, visibleCount]);
+
+  // Update when filter changes
+  useEffect(() => {
+    // Reset visible count when filter changes
+    setVisibleCount(3);
+    setShowAll(false);
+  }, [filter, projects]);
 
   // Handle show more/less
   const handleShowMore = () => {
@@ -38,7 +41,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   const handleShowLess = () => {
     setShowAll(false);
-    setVisibleCount(6);
+    setVisibleCount(3);
     // Smooth scroll to projects section when showing less
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -49,14 +52,11 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     }
   };
 
-  // Get actual categories from the data to ensure we have the right ones
-  const actualCategories = [...new Set(projects.map(p => p.category))].filter(Boolean);
-  
-  // Use actual categories if they exist, otherwise fall back to static ones
-  const staticCategories = ['All', 'Web Development', 'Backend Development', 'Data Science', 'Other'];
-  const categories = actualCategories.length > 0 
-    ? ['All', ...actualCategories] 
-    : staticCategories;
+  // Memoize categories
+  const categories = useMemo(() => {
+    const cats = ['All', ...new Set(projects.map(p => p.category))];
+    return cats;
+  }, [projects]);
 
   // Handle filter button clicks
   const handleFilterClick = (category: string) => {
@@ -74,44 +74,44 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
 
   return (
     <section id="projects" className="py-16 bg-gradient-to-b from-white via-gray-50/30 to-white dark:from-gray-900 dark:via-gray-800/30 dark:to-gray-900 section-padding transition-all duration-700 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Smooth animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-purple-400/5 to-pink-400/5 dark:from-purple-400/10 dark:to-pink-400/10 rounded-full blur-3xl"
           animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-            rotate: [0, 180, 360],
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+            rotate: [0, 120, 240, 360],
           }}
           transition={{
-            duration: 40,
+            duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: [0.25, 0.46, 0.45, 0.94]
           }}
         />
         <motion.div
           className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-br from-blue-400/5 to-indigo-400/5 dark:from-blue-400/10 dark:to-indigo-400/10 rounded-full blur-3xl"
           animate={{
-            x: [0, -25, 0],
-            y: [0, 25, 0],
-            rotate: [360, 180, 0],
+            x: [0, -15, 0],
+            y: [0, 15, 0],
+            rotate: [360, 240, 120, 0],
           }}
           transition={{
-            duration: 35,
+            duration: 12,
             repeat: Infinity,
-            ease: "linear"
+            ease: [0.25, 0.46, 0.45, 0.94]
           }}
         />
       </div>
@@ -162,8 +162,9 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700'
               }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               {category}
             </motion.button>
@@ -203,7 +204,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         </motion.div>
 
         {/* Show More/Less Controls */}
-        {filteredProjects.length > 6 && (
+        {filteredProjects.length > 3 && (
           <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
@@ -267,7 +268,9 @@ interface ProjectCardProps {
   onViewDetails: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onViewDetails }) => {
+const ProjectCard = React.memo(({ project, onViewDetails, index }: ProjectCardProps & { index: number }) => {
+  const handleClick = useCallback(() => onViewDetails(), [onViewDetails]);
+  
   return (
     <motion.div
       className="relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 group cursor-pointer project-card-wrapper"
@@ -283,15 +286,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onViewDetails
         },
       }}
       whileHover={{ 
-        y: -10,
-        rotateZ: -3,
-        scale: 1.03,
+        y: -8,
+        rotateZ: -1.5,
+        scale: 1.02,
         transition: { 
-          duration: 0.4,
+          duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94]
         }
       }}
-      onClick={onViewDetails}
+      whileTap={{
+        scale: 0.98,
+        transition: { duration: 0.2 }
+      }}
+      onClick={handleClick}
       style={{ transformStyle: 'preserve-3d' }}
     >
       {/* Animated rotating border */}
@@ -345,26 +352,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onViewDetails
         </div>
 
         {/* GitHub Stats */}
-        {(project.stars !== undefined || project.forks !== undefined || project.language) && (
+        {project.language && (
           <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500 mb-6">
-            {project.stars !== undefined && (
-              <div className="flex items-center gap-1">
-                <Star size={12} className="text-yellow-400 group-hover:text-yellow-300 transition-colors duration-300" />
-                <span>{project.stars}</span>
-              </div>
-            )}
-            {project.forks !== undefined && (
-              <div className="flex items-center gap-1">
-                <GitFork size={12} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                <span>{project.forks}</span>
-              </div>
-            )}
-            {project.language && (
-              <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-green-400 group-hover:bg-green-300 transition-colors duration-300"></div>
-                <span>{project.language}</span>
-              </div>
-            )}
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 rounded-full bg-green-400 group-hover:bg-green-300 transition-colors duration-300"></div>
+              <span>{project.language}</span>
+            </div>
           </div>
         )}
 
@@ -420,7 +413,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onViewDetails
       </div>
     </motion.div>
   );
-};
+});
 
 interface ProjectModalProps {
   project: Project;

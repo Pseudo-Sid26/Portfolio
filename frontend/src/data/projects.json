@@ -35,6 +35,23 @@
   },
   {
     "id": 3,
+    "title": "Loopr - Social Media Platform",
+    "description": "A modern full-stack social media platform with user authentication, real-time messaging, post sharing, friend connections, and interactive features. Built with cutting-edge technologies for seamless user experience.",
+    "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Tailwind CSS", "Redux", "Cloudinary", "Nodemailer"],
+    "githubUrl": "https://github.com/Pseudo-Sid26/loopr",
+    "liveUrl": "https://loopr-frontend.vercel.app/login",
+    "category": "Full Stack Development",
+    "domain": "Social Media & Networking",
+    "featured": true,
+    "stars": 18,
+    "forks": 6,
+    "language": "JavaScript",
+    "size": 3584,
+    "lastUpdated": "2025-07-06T00:00:00Z",
+    "createdAt": "2024-09-01T00:00:00Z"
+  },
+  {
+    "id": 4,
     "title": "E-Auction System for Personalized Bidding",
     "description": "A comprehensive e-auction platform with personalized bidding features, user authentication, and real-time bidding functionality.",
     "technologies": ["React", "Node.js", "MongoDB", "Express.js", "Socket.io", "JWT"],
@@ -51,7 +68,7 @@
     "createdAt": "2024-08-01T00:00:00Z"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "AgriTech Platform",
     "description": "Full-stack agricultural technology platform providing farmers with modern tools for crop management, weather monitoring, yield optimization, and complete farm management solution.",
     "technologies": ["React", "Python", "Django", "PostgreSQL", "Machine Learning", "IoT", "REST API"],

@@ -13,92 +13,61 @@ const About: React.FC<AboutProps> = ({ profile }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 dark:from-gray-800/50 dark:via-gray-900 dark:to-gray-800/50 section-padding transition-all duration-700 min-h-screen flex items-center relative overflow-hidden">
-      {/* Enhanced floating background elements */}
+    <section id="about" className="py-4 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 dark:from-gray-800/50 dark:via-gray-900 dark:to-gray-800/50 section-padding transition-all duration-700 min-h-screen flex items-center relative overflow-hidden">
+      {/* Simplified floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-400/5 to-purple-400/5 dark:from-blue-400/10 dark:to-purple-400/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-400/3 to-purple-400/3 dark:from-blue-400/5 dark:to-purple-400/5 rounded-full blur-3xl"
           animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 25,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-green-400/5 to-blue-400/5 dark:from-green-400/10 dark:to-blue-400/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-green-400/3 to-blue-400/3 dark:from-green-400/5 dark:to-blue-400/5 rounded-full blur-3xl"
           animate={{
-            x: [0, -20, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.3, 1],
-            rotate: [360, 180, 0],
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 30,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 5
+            delay: 2
           }}
         />
         <motion.div
-          className="absolute top-1/2 right-10 w-48 h-48 bg-gradient-to-br from-purple-400/5 to-pink-400/5 dark:from-purple-400/10 dark:to-pink-400/10 rounded-full blur-3xl"
+          className="absolute top-1/2 right-10 w-48 h-48 bg-gradient-to-br from-purple-400/3 to-pink-400/3 dark:from-purple-400/5 dark:to-pink-400/5 rounded-full blur-3xl"
           animate={{
-            x: [0, 15, 0],
-            y: [0, -15, 0],
-            scale: [1, 1.1, 1],
-            rotate: [0, 270, 0],
+            scale: [1, 1.08, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 7,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 10
+            delay: 3
           }}
         />
-        
-        {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-blue-400/30 dark:bg-blue-300/30 rounded-full"
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${20 + i * 12}%`,
-            }}
-            animate={{
-              y: [0, -25, 0],
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.4, 1],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.4,
-            }}
-          />
-        ))}
       </div>
       
       <div className="container-max w-full relative z-10">
@@ -204,7 +173,6 @@ const About: React.FC<AboutProps> = ({ profile }) => {
               </h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 font-lora text-sm">
                 {profile.bio} I'm passionate about creating beautiful, functional, and user-centered digital experiences. 
-                With expertise in modern web technologies, I help businesses and individuals bring their digital visions to life.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed font-lora text-sm">
                 When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 

@@ -20,7 +20,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.4,
       },
     },
   };
@@ -31,7 +31,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
@@ -57,7 +57,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 40,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -71,7 +71,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
             scale: [1, 1.3, 1],
           }}
           transition={{
-            duration: 35,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 8
@@ -86,7 +86,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 30,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 15
@@ -120,14 +120,14 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       <div className="container-max relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-inter font-bold text-primary dark:text-white mb-4"
+            className="text-4xl md:text-5xl font-inter font-bold text-primary dark:text-white mb-6"
             variants={itemVariants}
           >
             Work Experience
@@ -148,7 +148,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
           {experiences.map((experience, index) => (
             <motion.div
               key={`${experience.company}-${experience.title}`}
-              className={`relative flex items-center mb-12 ${
+              className={`relative flex items-center mb-16 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
               initial="hidden"
@@ -209,11 +209,11 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                   )}
 
                   {/* Header */}
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-1">
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">
                       {experience.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-accent font-medium mb-2">
+                    <div className="flex items-center gap-2 text-accent font-medium mb-3">
                       <Briefcase size={16} />
                       <span>{experience.company}</span>
                     </div>
@@ -233,7 +233,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                   </div>
 
                   {/* Description */}
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <ul className="space-y-2">
                       {Array.isArray(experience.description) 
                         ? experience.description.map((desc, descIndex) => (
@@ -254,7 +254,7 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
 
                   {/* Technologies */}
                   <div>
-                    <h4 className="font-medium text-primary dark:text-white mb-2">Key Technologies:</h4>
+                    <h4 className="font-medium text-primary dark:text-white mb-3">Key Technologies:</h4>
                     <div className="flex flex-wrap gap-2">
                       {experience.technologies.map((tech) => (
                         <span

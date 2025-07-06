@@ -15,22 +15,22 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
 
   const titles = [
     "Full Stack Developer",
-    "AI/ML Engineer", 
+    "AI Developer", 
     "Software Engineer",
     "Web Developer"
   ];
 
-  // Typewriter effect
+  // Smooth Typewriter effect
   React.useEffect(() => {
     const currentTitle = titles[currentTitleIndex];
     const timeout = setTimeout(() => {
       if (!isDeleting) {
-        // Typing
+        // Typing with variable speed for more natural feel
         if (typedText.length < currentTitle.length) {
           setTypedText(currentTitle.slice(0, typedText.length + 1));
         } else {
-          // Pause before deleting
-          setTimeout(() => setIsDeleting(true), 2000);
+          // Longer pause before deleting for better UX
+          setTimeout(() => setIsDeleting(true), 3000);
         }
       } else {
         // Deleting
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
           setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
         }
       }
-    }, isDeleting ? 50 : 150);
+    }, isDeleting ? 100 : 150); // Simplified typing speed
 
     return () => clearTimeout(timeout);
   }, [typedText, currentTitleIndex, isDeleting, titles]);
@@ -49,7 +49,15 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 10; // Even less offset to scroll further down
+      const elementTop = aboutSection.getBoundingClientRect().top;
+      const currentScrollY = window.pageYOffset;
+      const targetScrollY = currentScrollY + elementTop - headerHeight;
+
+      window.scrollTo({
+        top: targetScrollY,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -69,83 +77,76 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
     >
       {/* Advanced Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient Orbs */}
+        {/* Simplified Gradient Orbs */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-600/20 dark:from-blue-500/30 dark:to-purple-700/30 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-600/10 dark:from-blue-500/15 dark:to-purple-700/15 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-400/20 to-blue-600/20 dark:from-cyan-500/30 dark:to-blue-700/30 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/15 to-pink-600/15 dark:from-purple-500/25 dark:to-pink-700/25 rounded-full blur-3xl"
-          animate={{
-            rotate: [0, 360],
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 30,
+            duration: 8,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
         />
-        
-        {/* Additional animated orbs */}
         <motion.div
-          className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-indigo-400/10 to-purple-400/10 dark:from-indigo-500/20 dark:to-purple-500/20 rounded-full blur-2xl"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-400/10 to-blue-600/10 dark:from-cyan-500/15 dark:to-blue-700/15 rounded-full blur-3xl"
           animate={{
-            x: [0, 20, 0],
-            y: [0, -20, 0],
-            scale: [1, 1.3, 1],
-            rotate: [0, 270, 0],
+            scale: [1.1, 1, 1.1],
           }}
           transition={{
-            duration: 15,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 2
           }}
         />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/8 to-pink-600/8 dark:from-purple-500/12 dark:to-pink-700/12 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4
+          }}
+        />
         
-        {/* Floating Particles */}
-        {[...Array(8)].map((_, i) => (
+        {/* Simplified additional orbs */}
+        <motion.div
+          className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-indigo-400/5 to-purple-400/5 dark:from-indigo-500/10 dark:to-purple-500/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3
+          }}
+        />
+        
+        {/* Smooth Floating Particles - Like gentle bubbles */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-blue-400/40 dark:bg-blue-300/40 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/15 dark:bg-blue-300/15 rounded-full"
             style={{
-              left: `${15 + i * 12}%`,
-              top: `${25 + i * 8}%`,
+              left: `${25 + i * 25}%`,
+              top: `${35 + i * 15}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.4, 1, 0.4],
-              scale: [1, 1.5, 1],
+              y: [0, -12, 0],
+              x: [0, 3, 0],
+              opacity: [0.1, 0.4, 0.1],
             }}
             transition={{
-              duration: 3 + i * 0.5,
+              duration: 8 + i * 2,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 1.5,
+              ease: [0.25, 0.46, 0.45, 0.94]
             }}
           />
         ))}
@@ -235,7 +236,9 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <span className="text-gray-600 dark:text-gray-400">I'm a </span>
+            <span className="text-gray-600 dark:text-gray-400">
+              I'm {titles[currentTitleIndex] === "AI Developer" ? "an" : "a"}{" "}
+            </span>
             <span className="text-blue-600 dark:text-blue-400 font-semibold ml-3 min-w-[250px] text-left">
               {typedText}
               <motion.span

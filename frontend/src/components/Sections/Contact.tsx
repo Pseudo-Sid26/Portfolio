@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
       },
     },
   };
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
             rotate: [0, 180, 360],
           }}
           transition={{
-            duration: 55,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
             rotate: [360, 180, 0],
           }}
           transition={{
-            duration: 48,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 15
@@ -155,7 +155,7 @@ const Contact: React.FC = () => {
             rotate: [0, 270, 0],
           }}
           transition={{
-            duration: 40,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 20
