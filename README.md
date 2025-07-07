@@ -2,7 +2,7 @@
 
 A stunning, fully responsive portfolio website built with React, TypeScript, and Tailwind CSS, featuring advanced animations, seamless design transitions, and modern UI patterns.
 
-![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![Portfolio Preview](https://siddhesh-chavan-portfolio.vercel.app/)
 ![React](https://img.shields.io/badge/React-19.1.0-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-blue)
@@ -63,6 +63,50 @@ A stunning, fully responsive portfolio website built with React, TypeScript, and
 - **PostCSS 8.5.6** - CSS processing and optimization
 - **Autoprefixer 10.4.21** - Automatic vendor prefixing
 
+## 📁 Project Structure
+
+```
+Portfolio/
+├── frontend/
+│   ├── public/
+│   │   ├── images/
+│   │   │   ├── profile.jpg
+│   │   │   └── profile-about.jpg
+│   │   └── assets/
+│   │       └── Siddhesh2_Resume.pdf
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Layout/
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── Footer.tsx
+│   │   │   ├── Sections/
+│   │   │   │   ├── Hero.tsx
+│   │   │   │   ├── About.tsx
+│   │   │   │   ├── Projects.tsx
+│   │   │   │   ├── Skills.tsx
+│   │   │   │   ├── Experience.tsx
+│   │   │   │   └── Contact.tsx
+│   │   │   └── UI/
+│   │   │       ├── ThemeToggle.tsx
+│   │   │       └── LoadingSpinner.tsx
+│   │   ├── data/
+│   │   │   ├── profile.ts
+│   │   │   ├── experience.ts
+│   │   │   └── projects.json
+│   │   ├── services/
+│   │   │   ├── api.ts
+│   │   │   ├── emailjs.ts
+│   │   │   ├── mailgun.ts
+│   │   │   ├── fallbackEmail.ts
+│   │   │   └── directEmail.ts
+│   │   └── types/
+│   │       └── index.ts
+│   ├── package.json
+│   ├── vite.config.ts
+│   ├── tailwind.config.js
+│   └── tsconfig.json
+├── README.md
+└── .gitignore
 ```
 
 ## 🚀 Quick Start
@@ -347,6 +391,9 @@ The portfolio features a comprehensive animation system:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 

@@ -49,14 +49,9 @@ const Hero: React.FC<HeroProps> = ({ profile }) => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      const headerHeight = 10; // Even less offset to scroll further down
-      const elementTop = aboutSection.getBoundingClientRect().top;
-      const currentScrollY = window.pageYOffset;
-      const targetScrollY = currentScrollY + elementTop - headerHeight;
-
-      window.scrollTo({
-        top: targetScrollY,
-        behavior: 'smooth'
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
