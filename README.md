@@ -2,7 +2,8 @@
 
 A stunning, fully responsive portfolio website built with React, TypeScript, and Tailwind CSS, featuring advanced animations, seamless design transitions, and modern UI patterns.
 
-![Portfolio Preview](https://siddhesh-chavan-portfolio.vercel.app/)
+[Portfolio-Live](https://siddhesh-chavan-portfolio.vercel.app/)
+
 ![React](https://img.shields.io/badge/React-19.1.0-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-blue)
